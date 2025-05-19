@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: monopoly-backend
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn monopoly_api.wsgi:application"
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False
+      - key: ALLOWED_HOSTS
+        value: monopoly-backend.onrender.com
